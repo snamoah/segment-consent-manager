@@ -1,3 +1,5 @@
+let consentCalled = false;
+
 export default function conditionallyLoadAnalytics({
   writeKey,
   destinations,
@@ -48,6 +50,10 @@ export default function conditionallyLoadAnalytics({
   if (isAnythingEnabled) {
     console.log('===> if something is enabled', onConsent);
     window.analytics.load(writeKey, {integrations})
-    onConsent()
+
+    if (onConsent && !consentCalled) {
+      onConsent()
+      consentCalled = true
+    }
   }
 }

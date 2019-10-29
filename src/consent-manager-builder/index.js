@@ -122,8 +122,7 @@ export default class ConsentManagerBuilder extends Component {
       writeKey,
       destinations,
       destinationPreferences,
-      isConsentRequired,
-      onConsent,
+      isConsentRequired
     })
 
     let preferences
@@ -169,7 +168,7 @@ export default class ConsentManagerBuilder extends Component {
   }
 
   handleSaveConsent = (newPreferences, shouldReload) => {
-    const {writeKey, cookieDomain, mapCustomPreferences} = this.props
+    const {writeKey, cookieDomain, mapCustomPreferences, onConsent} = this.props
 
     this.setState(prevState => {
       const {
@@ -215,7 +214,8 @@ export default class ConsentManagerBuilder extends Component {
         destinations,
         destinationPreferences,
         isConsentRequired,
-        shouldReload
+        shouldReload,
+        onConsent
       })
 
       return {destinationPreferences, preferences, newDestinations}
