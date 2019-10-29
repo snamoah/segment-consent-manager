@@ -60,7 +60,8 @@ export default class ConsentManager extends PureComponent {
       preferencesDialogContent,
       cancelDialogTitle,
       cancelDialogContent,
-      onError
+      onError,
+      onConsent
     } = this.props
 
     return (
