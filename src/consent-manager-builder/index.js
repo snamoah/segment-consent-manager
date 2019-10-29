@@ -119,7 +119,8 @@ export default class ConsentManagerBuilder extends Component {
       writeKey,
       destinations,
       destinationPreferences,
-      isConsentRequired
+      isConsentRequired,
+      onConsent
     })
 
     let preferences

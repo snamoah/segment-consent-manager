@@ -19,6 +19,11 @@ export default function conditionallyLoadAnalytics({
     // Load a.js normally when consent isn't required and there's no preferences
     if (!window.analytics.initialized) {
       window.analytics.load(writeKey)
+
+      if (onConsent && !consentCalled) {
+        onConsent()
+        consentCalled = true
+      }
     }
     return
   }
