@@ -32,12 +32,14 @@ export default class ConsentManagerBuilder extends Component {
     shouldRequireConsent: PropTypes.func,
     initialPreferences: PropTypes.object,
     mapCustomPreferences: PropTypes.func,
-    cookieDomain: PropTypes.string
+    cookieDomain: PropTypes.string,
+    onConsent: PropTypes.func,
   }
 
   static defaultProps = {
     otherWriteKeys: [],
     onError: undefined,
+    onConsent: () => {},
     shouldRequireConsent: () => true,
     initialPreferences: {},
     mapCustomPreferences: undefined,
@@ -94,6 +96,7 @@ export default class ConsentManagerBuilder extends Component {
     const {
       writeKey,
       otherWriteKeys,
+      onConsent,
       shouldRequireConsent,
       initialPreferences,
       mapCustomPreferences
@@ -115,7 +118,8 @@ export default class ConsentManagerBuilder extends Component {
       writeKey,
       destinations,
       destinationPreferences,
-      isConsentRequired
+      isConsentRequired,
+      onConsent,
     })
 
     let preferences

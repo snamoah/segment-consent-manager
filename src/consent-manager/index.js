@@ -27,11 +27,13 @@ export default class ConsentManager extends PureComponent {
     preferencesDialogContent: PropTypes.node.isRequired,
     onError: PropTypes.func,
     cancelDialogTitle: PropTypes.node,
-    cancelDialogContent: PropTypes.node.isRequired
+    cancelDialogContent: PropTypes.node.isRequired,
+    onConsent: PropTypes.func
   }
 
   static defaultProps = {
     otherWriteKeys: [],
+    onConsent: () => {},
     shouldRequireConsent: () => true,
     implyConsentOnInteraction: true,
     onError: undefined,
@@ -69,6 +71,7 @@ export default class ConsentManager extends PureComponent {
         shouldRequireConsent={shouldRequireConsent}
         cookieDomain={cookieDomain}
         initialPreferences={initialPreferences}
+        onConsent={onConsent}
         mapCustomPreferences={this.handleMapCustomPreferences}
       >
         {({

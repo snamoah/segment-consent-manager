@@ -3,7 +3,8 @@ export default function conditionallyLoadAnalytics({
   destinations,
   destinationPreferences,
   isConsentRequired,
-  shouldReload = true
+  shouldReload = true,
+  onConsent,
 }) {
   const integrations = {All: false, 'Segment.io': true}
   let isAnythingEnabled = false
@@ -40,5 +41,6 @@ export default function conditionallyLoadAnalytics({
   // Don't load a.js at all if nothing has been enabled
   if (isAnythingEnabled) {
     window.analytics.load(writeKey, {integrations})
+    onConsent()
   }
 }
