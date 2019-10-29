@@ -9,11 +9,16 @@ export default function conditionallyLoadAnalytics({
   const integrations = {All: false, 'Segment.io': true}
   let isAnythingEnabled = false
 
+  console.log('===> inside analytics');
+
   if (!destinationPreferences) {
+    console.log('===> destination preferences', destinationPreferences);
     if (isConsentRequired) {
+      console.log('====> consent is required');
       return
     }
 
+    console.log('===> load a.js');
     // Load a.js normally when consent isn't required and there's no preferences
     if (!window.analytics.initialized) {
       window.analytics.load(writeKey)
@@ -38,8 +43,10 @@ export default function conditionallyLoadAnalytics({
     return
   }
 
+  console.log('===> gone pass destination setups');
   // Don't load a.js at all if nothing has been enabled
   if (isAnythingEnabled) {
+    console.log('===> if something is enabled', onConsent);
     window.analytics.load(writeKey, {integrations})
     onConsent()
   }

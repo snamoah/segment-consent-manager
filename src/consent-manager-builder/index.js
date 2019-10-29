@@ -101,6 +101,8 @@ export default class ConsentManagerBuilder extends Component {
       initialPreferences,
       mapCustomPreferences
     } = this.props
+
+    console.log('===> initializing manager')
     // TODO: add option to run mapCustomPreferences on load so that the destination preferences automatically get updated
     const {destinationPreferences, customPreferences} = loadPreferences()
 
@@ -113,6 +115,8 @@ export default class ConsentManagerBuilder extends Component {
       destinations,
       destinationPreferences
     )
+
+    console.log('===> before conditional load analytics', onConsent);
 
     conditionallyLoadAnalytics({
       writeKey,
@@ -204,6 +208,8 @@ export default class ConsentManagerBuilder extends Component {
       )
 
       savePreferences({destinationPreferences, customPreferences, cookieDomain})
+      console.log('===> saving consent');
+      console.log('===> before loading analytics');
       conditionallyLoadAnalytics({
         writeKey,
         destinations,
