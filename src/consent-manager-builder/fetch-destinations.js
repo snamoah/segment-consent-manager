@@ -18,7 +18,13 @@ async function fetchDestinationForWriteKey(writeKey) {
 
   // Rename creationName to id to abstract the weird data model
   for (const destination of destinations) {
-    destination.id = destination.creationName
+    /**
+     * Impact Radius is now Impact on Segment.. maybe this is why
+     * the requests are failing. So we'll change the name here and test
+     * to see if this works
+     */
+    const name = destination.creationName
+    destination.id = name === 'Impact Radius' ? 'Impact' : name
     delete destination.creationName
   }
 
