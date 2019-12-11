@@ -24,7 +24,7 @@ async function fetchDestinationForWriteKey(writeKey) {
      * to see if this works
      */
     const name = destination.creationName
-    destination.id = name === 'Impact Radius' ? 'Impact' : name
+    destination.id = name
     delete destination.creationName
   }
 
